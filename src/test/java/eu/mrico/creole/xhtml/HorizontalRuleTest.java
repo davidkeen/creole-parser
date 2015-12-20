@@ -31,4 +31,15 @@ public class HorizontalRuleTest {
         System.out.println(output);
         assertTrue(output.contains("<hr/>"));
     }
+
+    @Test
+    public void hrWithSpaceAfter() throws Exception {
+        String in = "A horizontal rule\n----\n ";
+        Document doc = Creole.parse(in);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        new XHtmlWriter().write(doc, baos);
+        String output = baos.toString("UTF-8");
+        System.out.println(output);
+        assertTrue(output.contains("<hr/>"));
+    }
 }
